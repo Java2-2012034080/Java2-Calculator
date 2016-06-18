@@ -60,77 +60,9 @@ public class Cal_Frame extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getSource()==but[10]){ // "c"±¸Çö
-			show.setText("0");
-			result=0;
-		}
-		else if(e.getSource()==but[6]){
-			n=7;
-			show.append(""+n);	
-		}
-		else if(e.getSource()==but[7]){
-			n=8;
-			show.append(""+n);	
-		}
-		else if(e.getSource()==but[8]){
-			n=9;
-			show.append(""+n);	
-		}
-		else if(e.getSource()==but[11]){
-			n=4;
-			show.append(""+n);	
-		}
-		else if(e.getSource()==but[12]){
-			n=5;
-			show.append(""+n);	
-		}
-		else if(e.getSource()==but[13]){
-			n=6;
-			show.append(""+n);	
-		}
-		else if(e.getSource()==but[16]){
-			n=1;
-			show.append(""+n);	
-		}
-		else if(e.getSource()==but[17]){
-			n=2;
-			show.append(""+n);	
-		}
-		else if(e.getSource()==but[18]){
-			n=3;
-			show.append(""+n);	
-		}
 		
-		
-		else if(e.getSource()==but[20]){
-			n=n*10;
-			show.append("0");
-		}
-		else if(e.getSource()==but[21]){
-			n=n*100;
-			show.append("00");
-		}
-		
-		else if(e.getSource()==but[4]){
-			result=result/n;
-			show.append("/");
-		}
-		else if(e.getSource()==but[9]){
-			result=n*result;
-			show.append("x");
-		}
-		else if(e.getSource()==but[14]){
-			result=result-n;
-			show.append("-");
-		}
-		else if(e.getSource()==but[19]){
-			result=result+n;
-			show.append("+");
-		}
-		else if(e.getSource()==but[24]){
-			show.append(""+result);
-		}
-		
+			
+			
 		
 	}
 
