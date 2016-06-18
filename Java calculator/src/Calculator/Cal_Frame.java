@@ -107,8 +107,8 @@ public class Cal_Frame extends JFrame implements ActionListener {
 					bool= true;
 					if(count++==0)
 						result=Integer.parseInt(text2);
-						
-					n2=Integer.parseInt(text2);
+					else	
+						n2=Integer.parseInt(text2);
 					calculating();
 					operator="%";
 					break;
@@ -127,8 +127,8 @@ public class Cal_Frame extends JFrame implements ActionListener {
 					bool= true;
 					if(count++==0)
 						result=Integer.parseInt(text2);
-						
-					n2=Integer.parseInt(text2);
+					else	
+						n2=Integer.parseInt(text2);
 					calculating();
 					operator="/";
 					break;
@@ -140,8 +140,8 @@ public class Cal_Frame extends JFrame implements ActionListener {
 					bool= true;
 					if(count++==0)
 						result=Integer.parseInt(text2);
-						
-					n2=Integer.parseInt(text2);
+					else	
+						n2=Integer.parseInt(text2);
 					calculating();
 					operator="x";
 					break;
@@ -159,8 +159,8 @@ public class Cal_Frame extends JFrame implements ActionListener {
 					bool= true;
 					if(count++==0)
 						result=Integer.parseInt(text2);
-						
-					n2=Integer.parseInt(text2);
+					else	
+						n2=Integer.parseInt(text2);
 					calculating();
 					operator="-";
 					break;
@@ -171,13 +171,15 @@ public class Cal_Frame extends JFrame implements ActionListener {
 					bool= true;
 					if(count++==0)
 						result=Integer.parseInt(text2);
-						
-					n2=Integer.parseInt(text2);
+					else	
+						n2=Integer.parseInt(text2);
 					calculating();
 					operator="+";
 					break;
 				case 22: //.
 				case 24: //=
+					text2 = show.getText();
+					n2=Integer.parseInt(text2);
 					calculating();
 					show.setText(""+result);
 					result=0;
