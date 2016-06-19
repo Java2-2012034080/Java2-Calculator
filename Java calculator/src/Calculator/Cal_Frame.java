@@ -2,6 +2,7 @@ package Calculator;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,15 +12,18 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class Cal_Frame extends JFrame implements ActionListener {
 
 
 	private JPanel panel;
-	private JTextArea show;
+	private JTextArea log;
+	private JTextField show;
+	private Font font;
 	private JButton[] but;
 	private String[] but_name = { 
-			"Back", "1/x", "%", "root", "/", // 0~4
+			"log", "1/x", "%", "root", "/", // 0~4
  			"-/+", "7", "8", "9","x", //5~9
 			"C", "4", "5", "6", "-",  //10~14
 			"","1", "2", "3", "+",  //15~19
@@ -47,14 +51,18 @@ public class Cal_Frame extends JFrame implements ActionListener {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("박지훈 / 김영민 계산기");
 		
-		show = new JTextArea(5,10);
+		show = new JTextField(10);
+		log = new JTextArea(5,10);
 		panel = new JPanel();
 		show.setEditable(false);
-		JScrollPane scroll = new JScrollPane(show);
+		JScrollPane scroll = new JScrollPane(log);
+		font = new Font("f",Font.BOLD,50);
+		show.setFont(font);
 		
 		setLayout(new BorderLayout());
-		add(scroll, BorderLayout.NORTH);
+		add(show, BorderLayout.NORTH);
 		add(panel, BorderLayout.CENTER);
+		add(scroll, BorderLayout.SOUTH);
 		panel.setLayout(new GridLayout(0, 5, 3, 3));
 		
 		but = new JButton[but_name.length];
@@ -62,6 +70,22 @@ public class Cal_Frame extends JFrame implements ActionListener {
 			but[i] = new JButton(but_name[i]);
 			panel.add(but[i]);
 			but[i].addActionListener(this);
+			
+			if(i==15||i==21||i==22||i==23){
+				but[i].setForeground(Color.BLACK);
+				but[i].setBackground(Color.BLACK);
+				continue;
+				}
+			if(i%5==4){
+				but[i].setForeground(Color.WHITE);
+				but[i].setBackground(Color.BLUE);
+				continue;
+				}
+			if(i==10){
+				but[i].setForeground(Color.WHITE);
+				but[i].setBackground(Color.RED);
+				continue;
+				}
 			but[i].setForeground(Color.WHITE);
 			but[i].setBackground(Color.BLACK);
 		}
@@ -98,8 +122,22 @@ public class Cal_Frame extends JFrame implements ActionListener {
 					break;
 					
 					
-				case 0: //back
+				case 0: //log
+					n1=Double.parseDouble(text1);
+					n1=Math.log10(n1);
+					text1=Double.toString(n1);
+					show.setText(text1);
+					
+					break;
 				case 1: //inverse
+					
+					n1=Double.parseDouble(text1);
+					n1=1/n1;
+					text1=Double.toString(n1);
+					show.setText(text1);
+					
+						
+					break;
 				case 2: //%
 					text2 = show.getText();
 					text1= "";
@@ -111,14 +149,15 @@ public class Cal_Frame extends JFrame implements ActionListener {
 						n2=Integer.parseInt(text2);
 					calculating();
 					operator="%";
+					log.append(text2+operator);
 					break;
 				case 3: //root
-					text2 = show.getText();
-					text1= "";
-					show.setText("root");
-					bool= true;
-					//n1=Integer.parseInt(text2);
-					//
+					
+					n1=Double.parseDouble(text1);
+					n1=Math.sqrt(n1);
+					text1=Double.toString(n1);
+					show.setText(text1);
+					
 					break;
 				case 4: // 나누기
 					text2 = show.getText();
@@ -126,24 +165,33 @@ public class Cal_Frame extends JFrame implements ActionListener {
 					show.setText("/");
 					bool= true;
 					if(count++==0)
-						result=Integer.parseInt(text2);
+						result=Double.parseDouble(text2);
 					else	
-						n2=Integer.parseInt(text2);
+						n2=Double.parseDouble(text2);
 					calculating();
 					operator="/";
+					log.append(text2+operator);
 					break;
 				case 5: // 부호
+					
+					n1=Double.parseDouble(text1);
+					n1=n1*(-1);
+					text1=Double.toString(n1);
+					show.setText(text1);
+					
+					break;
 				case 9: // 곱하기
 					text2 = show.getText();
 					text1= "";
 					show.setText("x");
 					bool= true;
 					if(count++==0)
-						result=Integer.parseInt(text2);
+						result=Double.parseDouble(text2);
 					else	
-						n2=Integer.parseInt(text2);
+						n2=Double.parseDouble(text2);
 					calculating();
 					operator="x";
+					log.append(text2+operator);
 					break;
 				case 10: // c
 					text1=""; text2="";
@@ -151,6 +199,7 @@ public class Cal_Frame extends JFrame implements ActionListener {
 					n2=0;
 					result=0;
 					show.setText(null);
+					log.append("\n");
 					break;
 				case 14: //-
 					text2 = show.getText();
@@ -158,11 +207,12 @@ public class Cal_Frame extends JFrame implements ActionListener {
 					show.setText("-");
 					bool= true;
 					if(count++==0)
-						result=Integer.parseInt(text2);
+						result=Double.parseDouble(text2);
 					else	
-						n2=Integer.parseInt(text2);
+						n2=Double.parseDouble(text2);
 					calculating();
 					operator="-";
+					log.append(text2+operator);
 					break;
 				case 19: //+
 					text2 = show.getText();
@@ -170,18 +220,21 @@ public class Cal_Frame extends JFrame implements ActionListener {
 					show.setText("+");
 					bool= true;
 					if(count++==0)
-						result=Integer.parseInt(text2);
+						result=Double.parseDouble(text2);
 					else	
-						n2=Integer.parseInt(text2);
+						n2=Double.parseDouble(text2);
 					calculating();
 					operator="+";
+					log.append(text2+operator);
 					break;
-				case 22: //.
+				case 22: // 소수점은 구현하지 못하였습니다 ㅠㅠ
+					break;
 				case 24: //=
 					text2 = show.getText();
-					n2=Integer.parseInt(text2);
+					n2=Double.parseDouble(text2);
 					calculating();
 					show.setText(""+result);
+					log.append(text2+"="+result+"\n");
 					result=0;
 					n2=0;
 					count=0;
