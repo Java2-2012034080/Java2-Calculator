@@ -105,7 +105,8 @@ import java.awt.GridLayout;
  			 					bool= true;
  			 					if(count++==0)
  			 						result=Integer.parseInt(text2);
- 			 						
+ 			 					else	
+ 			 						n2=Integer.parseInt(text2);	
  			 					n2=Integer.parseInt(text2);
  			 					calculating();
  			 					operator="%";
@@ -125,7 +126,8 @@ import java.awt.GridLayout;
  			 					bool= true;
  			 					if(count++==0)
  			 						result=Integer.parseInt(text2);
- 			 						
+ 			 					else	
+ 			 						n2=Integer.parseInt(text2);		
  			 					n2=Integer.parseInt(text2);
  			 				calculating();
  			 					operator="/";
@@ -138,7 +140,8 @@ import java.awt.GridLayout;
  			 					bool= true;
  			 					if(count++==0)
  			 						result=Integer.parseInt(text2);
- 			 						
+ 			 					else	
+ 			 						n2=Integer.parseInt(text2);		
  			 					n2=Integer.parseInt(text2);
  			 					calculating();
  			 					operator="x";
@@ -157,7 +160,8 @@ import java.awt.GridLayout;
  			 					bool= true;
  			 					if(count++==0)
  			 						result=Integer.parseInt(text2);
- 			 						
+ 			 					else	
+ 			 						n2=Integer.parseInt(text2);		
  			 					n2=Integer.parseInt(text2);
  			 					calculating();
  			 					operator="-";
@@ -169,7 +173,8 @@ import java.awt.GridLayout;
  			 					bool= true;
  			 					if(count++==0)
  			 						result=Integer.parseInt(text2);
- 			 						
+ 			 					else	
+ 			 						n2=Integer.parseInt(text2);		
  			 					n2=Integer.parseInt(text2);
  			 					calculating();
  			 					operator="+";
