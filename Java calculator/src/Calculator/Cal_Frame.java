@@ -201,7 +201,7 @@ import java.awt.GridLayout;
  			 			result-=n2;
  			 		if(operator.equals("/"))
  			 			result/=n2;
- 			 		if(operator.equals("*"))
+ 			 		if(operator.equals("x"))
  			 			result*=n2;
  			 		if(operator.equals("%"))
  			 			result%=n2;
